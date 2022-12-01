@@ -1,11 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../models/transaction.dart';
 
-class TransactionListItem extends StatefulWidget {
+class TransactionListItem extends StatelessWidget {
   const TransactionListItem({
     Key key,
     @required this.transaction,
@@ -14,25 +12,6 @@ class TransactionListItem extends StatefulWidget {
 
   final Transaction transaction;
   final Function deleteTransaction;
-
-  @override
-  State<TransactionListItem> createState() => _TransactionListItemState();
-}
-
-class _TransactionListItemState extends State<TransactionListItem> {
-  Color _bgColor;
-
-  @override
-  void initState() {
-    super.initState();
-    const colors = [
-      Colors.purple,
-      Colors.green,
-      Colors.red,
-      Colors.blue,
-    ];
-    _bgColor = colors[Random().nextInt(4)];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +35,12 @@ class _TransactionListItemState extends State<TransactionListItem> {
           height: 40,
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-            color: _bgColor,
+            color: Theme.of(context).accentColor,
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           child: FittedBox(
             child: Text(
-              '\$${widget.transaction.amount.toStringAsFixed(2)}',
+              '\$${transaction.amount.toStringAsFixed(2)}',
               style: Theme.of(context).textTheme.headline6.copyWith(
                     fontSize: 17,
                     color: Colors.white,
@@ -70,15 +49,15 @@ class _TransactionListItemState extends State<TransactionListItem> {
           ),
         ),
         title: Text(
-          widget.transaction.title,
+          transaction.title,
           style: Theme.of(context).textTheme.headline6,
         ),
         subtitle: Text(
-          DateFormat('E, dd. MMMM yyyy.').format(widget.transaction.date),
+          DateFormat('E, dd. MMMM yyyy.').format(transaction.date),
         ),
         trailing: MediaQuery.of(context).size.width > 450
             ? TextButton.icon(
-                onPressed: () => widget.deleteTransaction(widget.transaction),
+                onPressed: () => deleteTransaction(transaction),
                 icon: const Icon(Icons.delete_forever_rounded),
                 label: const Text('Remove'),
                 style: ButtonStyle(
@@ -88,7 +67,7 @@ class _TransactionListItemState extends State<TransactionListItem> {
                 ),
               )
             : IconButton(
-                onPressed: () => widget.deleteTransaction(widget.transaction),
+                onPressed: () => deleteTransaction(transaction),
                 icon: Icon(
                   Icons.delete_forever_rounded,
                   color: Theme.of(context).errorColor,

@@ -35,7 +35,7 @@ class TransactionListItem extends StatelessWidget {
           height: 40,
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           child: FittedBox(

@@ -15,25 +15,25 @@ class TransactionList extends StatelessWidget {
     return Container(
       child: transactions.isEmpty
           ? const NoTransactionsFound()
-          : ListView(
-              children: transactions.reversed.map((transaction) {
+          : ListView.builder(
+              itemCount: transactions.length,
+              itemBuilder: (ctx, index) {
+                final transaction = transactions[transactions.length - 1 - index];
                 return TransactionListItem(
                   key: ValueKey(transaction.id),
                   transaction: transaction,
                   deleteTransaction: deleteTransaction,
                 );
-              }).toList(),
+              },
             ),
-      // : ListView.builder(
-      //     itemCount: transactions.length,
-      //     itemBuilder: (ctx, index) {
-      //       final transaction = transactions[transactions.length - 1 - index];
+      // : ListView(
+      //     children: transactions.reversed.map((transaction) {
       //       return TransactionListItem(
-      //         key: transaction.key,
+      //         key: ValueKey(transaction.id),
       //         transaction: transaction,
       //         deleteTransaction: deleteTransaction,
       //       );
-      //     },
+      //     }).toList(),
       //   ),
     );
   }

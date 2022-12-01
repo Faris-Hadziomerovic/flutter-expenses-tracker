@@ -31,21 +31,9 @@ class MyApp extends StatelessWidget {
     final ThemeData lightTheme = ThemeData(
       brightness: Brightness.light,
       // ignore: deprecated_member_use
-      accentColor: Color.fromARGB(255, 255, 72, 0),
+      primarySwatch: Colors.green,
+      errorColor: const Color.fromARGB(255, 255, 50, 50),
       fontFamily: 'QuickSand',
-      primarySwatch: Colors.deepOrange,
-      appBarTheme: AppBarTheme(
-        titleTextStyle: ThemeData.light()
-            .textTheme
-            .copyWith(
-              headline6: TextStyle(
-                fontFamily: 'QuickSand',
-                fontWeight: FontWeight.w500,
-                fontSize: 20,
-              ),
-            )
-            .headline6,
-      ),
       textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(
               fontFamily: 'OpenSans',
@@ -60,6 +48,18 @@ class MyApp extends StatelessWidget {
               color: Color.fromARGB(255, 155, 155, 155),
             ),
           ),
+      appBarTheme: AppBarTheme(
+        titleTextStyle: ThemeData.light()
+            .textTheme
+            .copyWith(
+              headline6: TextStyle(
+                fontFamily: 'QuickSand',
+                fontWeight: FontWeight.w500,
+                fontSize: 20,
+              ),
+            )
+            .headline6,
+      ),
       cardTheme: CardTheme(
         elevation: 5,
         shape: RoundedRectangleBorder(
@@ -80,22 +80,11 @@ class MyApp extends StatelessWidget {
     final ThemeData darkTheme = ThemeData(
       brightness: Brightness.dark,
       // ignore: deprecated_member_use
-      accentColor: Color.fromARGB(255, 255, 72, 0),
-      fontFamily: 'QuickSand',
+      accentColor: Colors.deepOrange,
       primarySwatch: Colors.deepOrange,
-      appBarTheme: AppBarTheme(
-        titleTextStyle: ThemeData.light()
-            .textTheme
-            .copyWith(
-              headline6: TextStyle(
-                fontFamily: 'QuickSand',
-                fontWeight: FontWeight.w500,
-                fontSize: 20,
-              ),
-            )
-            .headline6,
-      ),
-      textTheme: ThemeData.light().textTheme.copyWith(
+      errorColor: const Color.fromARGB(255, 255, 50, 50),
+      fontFamily: 'QuickSand',
+      textTheme: ThemeData.dark().textTheme.copyWith(
             headline6: TextStyle(
               fontFamily: 'OpenSans',
               fontWeight: FontWeight.bold,
@@ -109,6 +98,19 @@ class MyApp extends StatelessWidget {
               color: Color.fromARGB(255, 155, 155, 155),
             ),
           ),
+      appBarTheme: AppBarTheme(
+        titleTextStyle: ThemeData.light()
+            .textTheme
+            .copyWith(
+              headline6: TextStyle(
+                fontFamily: 'QuickSand',
+                fontWeight: FontWeight.w500,
+                fontSize: 20,
+              ),
+            )
+            .headline6,
+      ),
+
       cardTheme: CardTheme(
         elevation: 5,
         shape: RoundedRectangleBorder(
